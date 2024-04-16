@@ -20,9 +20,7 @@ ________________________________________
 
 Before programming the database into SQL, it is important to visualize what the table structure will look like, what information should be grouped together in a table, and what tables should be able to reference each other for future queries. The structure can be visually represented using an entity relationship diagram(ERD). While designing the structure, we focused on balancing functionality with normalization. The rules of normalization are important for maintaining data integrity and quality but over-normalized databases can lose functionality due to the increase in query complexity required to pull information. It is important to note this was actually an interactive process because although we built an initial ERD as we went to implement it in SQL and add functionality it was clear there were necessary modifications required. 
 
-<img src="https://imgur.com/SLW0N4X.png" alt="Description of the image">
-
-<img src="https://imgur.com/a/SLW0N4X.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+![ERD Diagram](https://raw.githubusercontent.com/justin-de-sousa/Assets/Microsoft-SQL-Server-Database-Creation/ERD.png)
 
  ________________________________________
 **Correlation Analysis Visualizations** 
