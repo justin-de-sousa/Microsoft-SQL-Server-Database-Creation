@@ -4,6 +4,11 @@
 The goal of this project was to create database in Microsoft SQL Server. Creating a good database requires tailoring the structure to meet the usecase, so for this project the usecase the database was designed for would be replacing the paper system of a fictional animal grooming salon called Mr. Bo Jangles. The new system was designed to manage customer data, employee records, appointment scheduling, and service details efficiently. In order to ensure the database would maintain data integrity, quality, scalability, and functionality the database utilized the principles of normalization.
 <br />
 
+<h2>Skills Learned</h2>
+
+- Proficiency in Microsoft SQL Server database creation and querying 
+- Enhanced knowledge of database design and normalization principles
+- Advanced ability to automate Microsoft SQL Server databases using triggers and functions
 
 <h2>Languages and Utilities Used</h2>
 
