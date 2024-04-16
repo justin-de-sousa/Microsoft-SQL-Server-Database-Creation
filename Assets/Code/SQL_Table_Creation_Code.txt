@@ -1,0 +1,120 @@
+CREATE TABLE [ServicePricing] (
+  [ServiceCodeID] INT PRIMARY KEY,
+  [ServiceName] VARCHAR(255),
+  [Price] DECIMAL
+);
+CREATE TABLE [Employee] (
+  [EmployeeID] INT IDENTITY(1,1) PRIMARY KEY,
+  [FirstName] VARCHAR(20),
+  [LastName] VARCHAR(20),
+  [EmployeeRole] VARCHAR(20),
+  [SickDays] INT,
+  [EmploymentType] VARCHAR(50),
+  [Degree] VARCHAR(20),
+  [GraduationDate] DATE,
+  [YearsOfExperience] INT,
+  [PhoneNumber] VARCHAR(10),
+  [Email] VARCHAR(50),
+  [Salary] DECIMAL,
+  [PersonalRef] VARCHAR(20),
+  [EmergencyContactPerson] VARCHAR(50),
+  [EmergencyContactNumber] VARCHAR(10),
+  CONSTRAINT CHK_EmployeeRole CHECK (
+        (EmployeeRole IN ('Office', 'Groomer') AND Degree IS NOT NULL AND GraduationDate IS NOT NULL AND YearsOfExperience IS NOT NULL)
+        OR EmployeeRole NOT IN ('Office', 'Groomer')
+  )
+);
+
+
+CREATE TABLE [Customer] (
+  [CustomerID] INT IDENTITY(1,1) PRIMARY KEY,
+  [FirstName ] VARCHAR(20) NOT NULL,
+  [LastName ] VARCHAR(20) NOT NULL ,
+  [PhoneNumber ] CHAR(10) NOT NULL,
+  [Email] VARCHAR(50),
+  [Age] INT,
+  [Gender] CHAR(1),
+  [StreetAddress] VARCHAR(100),
+  [City] VARCHAR(50),
+  [State] CHAR(2),
+  [ZipCode] VARCHAR(10)
+);
+
+CREATE TABLE [Pet] (
+  [PetID] INT IDENTITY(1,1) PRIMARY KEY,
+  [CustomerID] INT NOT NULL,
+  [PetName] VARCHAR(20),
+  [Species] VARCHAR(50) NOT NULL,
+  [Breed] VARCHAR(50),
+  [Weight] DECIMAL NOT NULL,
+  [HairType] CHAR(1) NOT NULL,
+  [Gender] CHAR(1),
+  [Vaxed] BIT NOT NULL CONSTRAINT [CHK_Vaxed] CHECK ([Vaxed] = 1), -- Add CHECK constraint
+  CONSTRAINT [FK_Pet.CustomerID]
+    FOREIGN KEY ([CustomerID])
+      REFERENCES [Customer]([CustomerID])
+);
+
+CREATE TABLE [Appointment] (
+  [AppointmentID] INT IDENTITY(1,1) PRIMARY KEY,
+  [EmployeeID] INT NOT NULL,
+  [CustomerID] INT NOT NULL,
+  [PetID] INT NOT NULL,
+  [DateTime] DATETIME NOT NULL,
+  [WalkIn] BIT NOT NULL,
+  [BasePrice] DECIMAL NOT NULL,
+  [AdditionalServicePrice] DECIMAL,
+  [TotalPrice] AS (ISNULL([BasePrice],0) + ISNULL([AdditionalServicePrice],0)) PERSISTED,
+  CONSTRAINT [FK_Appointment.PetID]
+    FOREIGN KEY ([PetID])
+      REFERENCES [Pet]([PetID]),
+  CONSTRAINT [FK_Appointment.CustomerID]
+    FOREIGN KEY ([CustomerID])
+      REFERENCES [Customer]([CustomerID]),
+  CONSTRAINT [FK_Appointment.EmployeeID]
+    FOREIGN KEY ([EmployeeID])
+      REFERENCES [Employee]([EmployeeID])
+);
+
+
+CREATE TABLE [AppointmentServices] (
+  [ServiceID] INT IDENTITY(1,1) PRIMARY KEY,
+  [ServiceCodeID] INT NOT NULL,
+  [AppointmentID] INT NOT NULL,
+  CONSTRAINT [FK_AppointmentServices.ServiceCodeID]
+    FOREIGN KEY ([ServiceCodeID])
+      REFERENCES [ServicePricing]([ServiceCodeID]),
+  CONSTRAINT [FK_AppointmentServices.AppointmentID]
+    FOREIGN KEY ([AppointmentID])
+      REFERENCES [Appointment]([AppointmentID])
+);
+
+
+CREATE TABLE [Paycheck] (
+  [PaycheckID] INT IDENTITY(1,1) PRIMARY KEY,
+  [EmployeeID] INT,
+  [IssueDate] DATE,
+  [PayPeriod Start] DATE,
+  [PayPeriod End] DATE,
+  CONSTRAINT [FK_Paycheck.EmployeeID]
+    FOREIGN KEY ([EmployeeID])
+      REFERENCES [Employee]([EmployeeID])
+);
+
+CREATE TABLE [PayStatement] (
+  [StatementID] INT IDENTITY(1,1) PRIMARY KEY,
+  [PaycheckID] INT,
+  [SSN] CHAR(11),
+  [Bank] VARCHAR(50),
+  [AccountNumber] VARCHAR(20),
+  [GrossPay] DECIMAL,
+  [FederalTax] DECIMAL,
+  [StateTax] DECIMAL,
+  [Medical] DECIMAL,
+  [Dental] DECIMAL,
+  [Disability] DECIMAL,
+  [LifeInsurance] DECIMAL,
+  CONSTRAINT [FK_PayStatement.PaycheckID]
+    FOREIGN KEY ([PaycheckID])
+      REFERENCES [Paycheck]([PaycheckID])
+);
