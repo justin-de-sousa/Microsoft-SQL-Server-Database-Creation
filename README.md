@@ -59,3 +59,16 @@ One of the goals of the database was to automate the base price calculation for 
 <p align="center"><strong>Base Pricing Table</strong></p>
 
 ![Base Price Table](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/40bec08c8c8945e65b453c8f52932fe3847fdcdc/Assets/base_pricing_table.png)
+
+The function to calculate the base price is a fairly simple if statement designed to take a weight and hair type value as a parameter and return the price but in order to make it an automated process within the database the use of triggers will be necessary. A trigger is a type of  stored procedure in SQL which will execute a given event, in this case a function, when a specific event occurs. In this case, the trigger to calculate the base price of an appointment should occur when an entry is inserted into the “Appointment” table. The trigger will use the PetID of an Appointment entry to then pull the pet’s weight and hair type from the PetTable. IT will then use these two pieces of information to call the base price function to automatically fill the base price value of the appointment. 
+
+<p align="center"><strong>Function to Calculate the Base Price</strong></p>
+<p align="center">
+  <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/6d7da71c31e93593bca47a9eed4f7a145718b420/Assets/get_base_price_function.png" alt="Get Base Price Function" width="60%"/>
+</p>
+
+
+<p align="center"><strong>Trigger Which Calls "GetBasePrice" Function when an Appointment Insert Occurs</strong></p>
+<p align="center">
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/6d7da71c31e93593bca47a9eed4f7a145718b420/Assets/set_base_price_trigger.png" alt="Set Base Price Trigger" width="80%"/>
+</p>
