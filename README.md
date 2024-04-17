@@ -23,7 +23,7 @@ Mr. Bo Jangles, a pet grooming salon, needs an electronic database to contain al
 ________________________________________
 **Designing Database Structure**
 
-Before programming the database into SQL, it is important to visualize what the table structure will look like, what information should be grouped together in a table, and what tables should be able to reference each other for future queries. The structure can be visually represented using an entity relationship diagram(ERD). While designing the structure, we focused on balancing functionality with normalization. The rules of normalization are important for maintaining data integrity and quality but over-normalized databases can lose functionality due to the increase in query complexity required to pull information. It is important to note this was actually an interactive process because although we built an initial ERD as we went to implement it in SQL and add functionality it was clear there were necessary modifications required. 
+Before programming the database into SQL, it is important to visualize what the table structure will look like, what information should be grouped together in a table, what type of value a piece of information should be stored as, and what tables should be able to reference each other for future queries. The structure can be visually represented using an entity relationship diagram(ERD). While designing the structure, we focused on balancing functionality with normalization. The rules of normalization are important for maintaining data integrity and quality but over-normalized databases can lose functionality due to the increase in query complexity required to pull information. It is important to note this was actually an interactive process because although we built an initial ERD as we went to implement it in SQL and add functionality it was clear there were necessary modifications required. 
 
 
 <p align="center"><strong>Final Entity Relationship Diagram in Crows Feet Notation</strong></p>
@@ -36,3 +36,19 @@ The database is split into 8 tables which are mostly self explanatory when looki
  ________________________________________
  
 **Creating the Tables in Microsft SQL Server**
+
+[Link to Table Creation Code](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/78855b7f0953bdbee4dc3fc51c5eaf07e7481553/Assets/Code/SQL_Table_Creation_Code.txt)
+
+Now that the database structure has been established the next step is coding it into Microsoft SQL Server. Running code in Microsoft SQL Server is done through queries on the SQL Server program. To make it as easy as possible to replicate the SQL code has been broken up and uploaded as txt files with the code associated with the relevant step. The code just needs to be copied and pasted into the SQL query window and then executed. 
+
+<p align="center"><strong>Example of Query Window with Code Ready to be Executed</strong></p>
+
+![Query Window](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/78855b7f0953bdbee4dc3fc51c5eaf07e7481553/Assets/SQL%20Query%20Window.png)
+
+
+The main consideration when taking the ERD database design and creating those tables in SQL is the order the tables should be created. In SQL, a table which has a foreign key reference to another table cannot be initialized until the table it references has already been created. For example, the “Customer” table has to be created before the “Pet” table because the “Pet” table references “Customer.” This will also be important when inputting test entries later because a pet cannot have an entry inserted unless the customer associated with the pet has already had their information inserted into the “Customer” table. This restriction on the order data must be inserted is due to constraints placed on foreign and primary keys. Constraints are very useful for maintaining data quality and integrity because it can help mitigate missing or improper data being inserted. If there is certain information that absolutely needs to be included when generating an entry a NOT NULL constraint can be added after the value type of the column value is established. 
+ ________________________________________
+
+**Functions and Triggers**
+
+
