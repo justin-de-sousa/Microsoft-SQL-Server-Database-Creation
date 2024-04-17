@@ -53,4 +53,9 @@ The main consideration when taking the ERD database design and creating those ta
 
 [Link to Functions and Triggers Code](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/91784d42ac9a270d9de905d57df4e165f4fa8d9b/Assets/Code/SQL%20Create%20Functions%20and%20Triggers%20Code.txt)
 
+One of the goals of the database was to automate the base price calculation for an appointment based on the animal's weight and hair type. This will require the use of triggers and functions which will automatically use the weight and hair type of a pet from their information in the “Pet” table to update the base price value of an “Appointment” table entry. 
 
+
+<p align="center"><strong>Base Pricing Table</strong></p>
+
+![Base Price Table](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/40bec08c8c8945e65b453c8f52932fe3847fdcdc/Assets/base_pricing_table.png)
