@@ -10,7 +10,7 @@ The goal of this project was to create database in Microsoft SQL Server. Creatin
 - Enhanced knowledge of database design and normalization principles
 - Advanced ability to automate Microsoft SQL Server databases using triggers and functions
 
-<h2>Languages and Utilities Used</h2>
+<h2>Languages and Tools Used</h2>
 
 - <b>Microsoft SQL Server</b> 
 - <b>Lucid Chart</b>
