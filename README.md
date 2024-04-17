@@ -51,4 +51,6 @@ The main consideration when taking the ERD database design and creating those ta
 
 **Functions and Triggers**
 
+[Link to Functions and Triggers Code](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/91784d42ac9a270d9de905d57df4e165f4fa8d9b/Assets/Code/SQL%20Create%20Functions%20and%20Triggers%20Code.txt)
+
 
