@@ -1,0 +1,98 @@
+-- Scalar-valued function to calculate price
+CREATE FUNCTION GetBasePrice (@HairType CHAR(1), @Weight DECIMAL)
+RETURNS DECIMAL
+AS
+BEGIN
+    DECLARE @Price DECIMAL
+
+    IF @HairType = 'S'
+        SELECT @Price = CASE
+            WHEN @Weight BETWEEN 5 AND 20 THEN 20
+            WHEN @Weight BETWEEN 21 AND 40 THEN 30
+            WHEN @Weight BETWEEN 41 AND 60 THEN 40
+            WHEN @Weight BETWEEN 61 AND 80 THEN 50
+            ELSE 60
+        END
+    ELSE
+        SELECT @Price = CASE
+            WHEN @Weight BETWEEN 5 AND 20 THEN 25
+            WHEN @Weight BETWEEN 21 AND 40 THEN 45
+            WHEN @Weight BETWEEN 41 AND 60 THEN 55
+            WHEN @Weight BETWEEN 61 AND 80 THEN 65
+            ELSE 70
+        END
+
+    RETURN @Price
+END;
+
+GO
+
+ -- Create a function to calculate the total additional service price for an appointment
+CREATE FUNCTION CalculateAdditionalServicePrice (@AppointmentID INT)
+RETURNS DECIMAL
+AS
+BEGIN
+    DECLARE @TotalPrice DECIMAL;
+
+    SELECT @TotalPrice = SUM(sp.Price)
+    FROM AppointmentServices AS asvc
+    INNER JOIN ServicePricing AS sp ON asvc.ServiceCodeID = sp.ServiceCodeID
+    WHERE asvc.AppointmentID = @AppointmentID;
+
+    RETURN @TotalPrice;
+END;
+
+GO
+-- Create a trigger to set the BasePrice of an appointment
+CREATE TRIGGER SetBasePrice
+ON Appointment
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @AppointmentID INT, @PetID INT, @HairType CHAR(1), @Weight DECIMAL, @BasePrice DECIMAL;
+
+    -- Get the AppointmentID and PetID from the inserted row
+    SELECT @AppointmentID = i.AppointmentID, @PetID = i.PetID
+    FROM inserted i;
+
+    -- Retrieve HairType and Weight from the Pet table using PetID
+    SELECT @HairType = p.HairType, @Weight = p.Weight
+    FROM Pet p
+    WHERE p.PetID = @PetID;
+
+    -- Calculate the BasePrice using the GetBasePrice function
+    SET @BasePrice = dbo.GetBasePrice(@HairType, @Weight);
+
+    -- Update the BasePrice in the Appointment table
+    UPDATE Appointment
+    SET BasePrice = @BasePrice
+    WHERE AppointmentID = @AppointmentID;
+END;
+
+GO
+-- Create a trigger to set the AdditionalServicePrice for an appointment
+CREATE TRIGGER SetAdditionalServicePrice
+ON AppointmentServices
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @AppointmentID INT, @AdditionalServicePrice DECIMAL;
+
+    -- Get the AppointmentID from the inserted row in AppointmentServices
+    SELECT @AppointmentID = i.AppointmentID
+    FROM inserted i;
+
+    -- Calculate the AdditionalServicePrice using the CalculateAdditionalServicePrice function
+    SELECT @AdditionalServicePrice = dbo.CalculateAdditionalServicePrice(@AppointmentID);
+
+    -- Update the AdditionalServicePrice in the corresponding Appointment row
+    UPDATE Appointment
+    SET AdditionalServicePrice = @AdditionalServicePrice
+    WHERE AppointmentID = @AppointmentID;
+END;
+
+
