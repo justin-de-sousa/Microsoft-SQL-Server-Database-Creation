@@ -72,3 +72,17 @@ The function to calculate the base price is a fairly simple if statement designe
 <p align="center">
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/6d7da71c31e93593bca47a9eed4f7a145718b420/Assets/set_base_price_trigger.png" alt="Set Base Price Trigger" width="80%"/>
 </p>
+
+The other part of the pricing process which needs to be automated is additional service pricing being added to the appointments total price. The additional services Mr. Bo Jangles offers can be found in the table below and is stored in the database under the “ServicePricing” table. To make the database as streamlined for an employee as possible the additional services should be automatically summed up and added to the total price of an appointment. To solve this issue without causing redundancy issues, the “AppointmentServices” table was created. This table will only record the service code (ServiceCodeID) of one additional service and the AppointmentID of the appointment it was utilized on (as well as a primary key to identify it of course). 
+
+<p align="center"><strong>Additional Service Pricing Table</strong></p>
+<p align="center">
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/be09100c06b8924724f927f4ecc865b9cacde9cd/Assets/additional_service_pricing_table.png" alt="Set Base Price Trigger" width="60%"/>
+</p>
+
+This time the function to calculate the additional service price will take an appointment ID as an input and return the cumulative cost of all the additional services booked for that particular appointment. Essentially the function finds all the entries in the “AppointmentServices” table for an appointment using the AppointmentID, finds what the price for each of these appointment service entries should be using an inner join on the ServiceCodeID, and sums them up.
+
+<p align="center"><strong>Function Calculating an Appointment Additonal Service Price</strong></p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/bc46f17f585aa76bde6fadaca13b31f6d0c9195f/Assets/additional_service_price_function.png" alt="Set Base Price Trigger" width="80%"/>
+</p>
