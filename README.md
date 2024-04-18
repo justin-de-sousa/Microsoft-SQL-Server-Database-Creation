@@ -125,3 +125,50 @@ The database should now be fully functioning so to make sure everything is worki
 
 The output allows for confirmation of the function and triggers working correctly. The additional service values for “Appointment” table entries is the sum of all the additional services in the “AppointmentServices” table associated with that appointment. The following will not be examples of questions a Bo Jangles employee may want to answer using the database. 
 
+<p align="center"><strong>What clients have not been seen in a year and when were they last seen?</strong></p>
+
+<p align="center">Query Code</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_2_code.png" width="90%"/>
+</p>
+
+<p align="center">Query Output</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_2_output.png" width="90%"/>
+</p>
+
+<p align="center"><strong>What services were performed on pets most often (by species)?</strong></p>
+
+<p align="center">Query Code</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_3_code.png" width="90%"/>
+</p>
+
+<p align="center">Query Output</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_3_output.png" width="80%"/>
+</p>
+
+<p align="center"><strong>Which customers have had the same walk-in service performed multiple times?</strong></p>
+
+<p align="center">Query Code</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_4_code.png" width="90%"/>
+</p>
+
+<p align="center">Query Output</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_4_output.png" width="80%"/>
+</p>
+
+<p align="center"><strong>Who are top 3 employees with the most years of experience?</strong></p>
+
+<p align="center">Query Code</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/3ebefa5682eec2616741832a9560be6085931690/Assets/query_5_code.png" width="80%"/>
+</p>
+
+<p align="center">Query Output</p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/3ebefa5682eec2616741832a9560be6085931690/Assets/query_5_output.png" width="80%"/>
+</p>
