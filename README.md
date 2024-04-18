@@ -98,3 +98,15 @@ ________________________________________
 
 **Data Insertion**
 
+[Link to Data Insertion Code](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/b8012e0f5865c5e4bc9dd9f633a7a95d5c7e7d09/Assets/Code/SQL_Data_Insertion_Code.txt)
+
+Once the tables were created and the functions and triggers were implemented the database is now ready to have data inserted into the tables. In order to test the database I used python to create entries. In total there I created 12 employees, 100 customers, 100 pets, 200 appointments, and 300 additional service entries. Importing all of these entries required a large amount of insert statements which can be found in the linked code above. Now that entries have been inserted, the database is ready to have queries performed on it for quick data exploration and analysis. 
+
+<p align="center"><strong>Customer table with test entries ready for queries</strong></p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/a0284d189ac178a875645056e5ae03d0999a06ee/Assets/example_of_table_with_entries.png" alt="Set Base Price Trigger" width="80%"/>
+</p>
+
+________________________________________
+
+**Database Testing and Querying**
