@@ -1,0 +1,795 @@
+INSERT INTO ServicePricing (ServiceCodeID, ServiceName, Price) VALUES
+(1, 'nail trim', 8.00),
+(2, 'ear cleaning', 5.00),
+(3, 'skin scrape', 25.00),
+(4, 'ear mite treatment', 10.00),
+(5, 'flea treatment', 15.00),
+(6, 'tick treatment', 15.00),
+(7, 'teeth brushing', 8.50),
+(8, 'nose & pad conditioning', 6.00),
+(9, 'eye cleaning & drops', 7.50),
+(10, 'chalking (5 colors available)', 4.00),
+(11, 'stenciling (20 designs, 8 color options)', 7.00),
+(12, 'feathering (6 options available)', 5.00),
+(13, 'Vitamins (soft shiny coat)', 15.00),
+(14, 'matted hair', 30.00);
+GO
+
+--Inserting Data into Employee
+
+-- 2 Full-Time Office Employees
+INSERT INTO [Employee]
+(FirstName, LastName, EmployeeRole, SickDays, EmploymentType, Degree, GraduationDate, YearsOfExperience, PhoneNumber, Email, Salary)
+VALUES
+('John', 'Doe', 'Office Work', 10, 'Full-Time', 'BS in Business', '2015-05-15', 6, '5555555555', 'john@example.com', 80000.31),
+('Jane', 'Smith', 'Office Work', 10, 'Full-Time', 'MS in Finance', '2012-05-15', 9, '5555555556', 'jane@example.com', 65000.50);
+
+-- 8 Full-Time Groomers
+INSERT INTO [Employee]
+(FirstName, LastName, EmployeeRole, SickDays, EmploymentType, Degree, GraduationDate, YearsOfExperience, PhoneNumber, Email, Salary)
+VALUES
+('Alice', 'Johnson', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2018-03-10', 4, '5555555557', 'alice@example.com', 31000.00),
+('Bob', 'Taylor', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2019-04-12', 3, '5555555558', 'bob@example.com', 42000.00),
+('Charlie', 'Brown', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2017-06-15', 5, '5555555559', 'charlie@example.com', 25000.00),
+('Diana', 'White', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2016-07-20', 6, '5555555560', 'diana@example.com', 33000.00),
+('Eva', 'Green', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2019-08-25', 3, '5555555561', 'eva@example.com', 42000.00),
+('Frank', 'Black', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2018-09-30', 4, '5555555562', 'frank@example.com', 45000.00),
+('Grace', 'Lee', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2017-10-05', 5, '5555555563', 'grace@example.com', 29000.00),
+('Henry', 'Miller', 'Grooming', 10, 'Full-Time', 'Dog Grooming School', '2016-11-15', 6, '5555555564', 'henry@example.com', 47000.00);
+
+-- 2 Part-Time Employees
+INSERT INTO [Employee]
+(FirstName, LastName, EmployeeRole, SickDays, EmploymentType, PhoneNumber, Email, PersonalRef, EmergencyContactPerson, EmergencyContactNumber, Salary)
+VALUES
+('Ivy', 'Gray', 'Cleaning', 5, 'Part-Time', '5555555565', 'ivy@example.com', 'Jack Gray', 'Jill Gray', '5555555566', 5000.00),
+('Jack', 'Gray', 'Cleaning', 5, 'Part-Time', '5555555567', 'jack@example.com', 'Ivy Gray', 'Jill Gray', '5555555568', 10000.00);
+
+-- Inserting Data into Paycheck Table
+
+-- Assuming EmployeeID is assigned sequentially starting from 1 to 12
+INSERT INTO [Paycheck]
+(EmployeeID, IssueDate, [PayPeriod Start], [PayPeriod End])
+VALUES
+(1, '2023-10-01', '2023-09-01', '2023-09-30'),
+(2, '2023-10-01', '2023-09-01', '2023-09-30'),
+(3, '2023-10-01', '2023-09-01', '2023-09-30'),
+(4, '2023-10-01', '2023-09-01', '2023-09-30'),
+(5, '2023-10-01', '2023-09-01', '2023-09-30'),
+(6, '2023-10-01', '2023-09-01', '2023-09-30'),
+(7, '2023-10-01', '2023-09-01', '2023-09-30'),
+(8, '2023-10-01', '2023-09-01', '2023-09-30'),
+(9, '2023-10-01', '2023-09-01', '2023-09-30'),
+(10, '2023-10-01', '2023-09-01', '2023-09-30'),
+(11, '2023-10-01', '2023-09-01', '2023-09-30'),
+(12, '2023-10-01', '2023-09-01', '2023-09-30');
+
+
+--Inserting Data into PayStatement Table
+
+--Assuming PaycheckID is assigned sequentially starting from 1 to 12
+--Inserting Data into PayStatement Table
+
+--Assuming PaycheckID is assigned sequentially starting from 1 to 12
+INSERT INTO [PayStatement]
+(PaycheckID, SSN, Bank, AccountNumber, GrossPay, FederalTax, StateTax, Medical, Dental, Disability, LifeInsurance)
+VALUES
+(1, '123-45-6789', 'Bank1', '123456789', 1500.00, 150.00, 75.00, 50.00, 25.00, 10.00, 5.00),
+(2, '987-65-4321', 'Bank2', '987654321', 1500.00, 150.00, 75.00, 50.00, 25.00, 10.00, 5.00),
+(3, '234-56-7890', 'Bank3', '234567890', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(4, '876-54-3210', 'Bank4', '876543210', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(5, '345-67-8901', 'Bank5', '345678901', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(6, '765-43-2109', 'Bank6', '765432109', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(7, '456-78-9012', 'Bank7', '456789012', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(8, '654-32-1098', 'Bank8', '654321098', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(9, '567-89-0123', 'Bank9', '567890123', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(10, '543-21-0987', 'Bank10', '543210987', 1200.00, 120.00, 60.00, 40.00, 20.00, 8.00, 4.00),
+(11, '678-90-1234', 'Bank11', '678901234', 800.00, 80.00, 40.00, NULL, NULL, NULL, NULL),
+(12, '432-10-9876', 'Bank12', '432109876', 800.00, 80.00, 40.00, NULL, NULL, NULL, NULL);
+
+INSERT INTO Customer (FirstName, LastName, PhoneNumber, Email, Age, Gender, StreetAddress, City, State, ZipCode)
+VALUES
+('Katherine', 'Jackson', '4436758860', 'Katherine.Jackson@example.com', 67, 'F', '342 Oak St', 'Somewhere', 'NC', '99133'),
+('Michael', 'Hall', '1710407660', 'Michael.Hall@example.com', 73, 'F', '719 Oak St', 'Somewhere', 'KS', '73620'),
+('Robert', 'Jones', '6209194198', 'Robert.Jones@example.com', 71, 'M', '762 Maple St', 'Somewhere', 'DE', '25128'),
+('Karen', 'Garcia', '1380534651', 'Karen.Garcia@example.com', 99, 'M', '417 Maple St', 'Somewhere', 'FL', '72053'),
+('Katherine', 'Young', '2256334740', 'Katherine.Young@example.com', 18, 'F', '182 Elm St', 'Somewhere', 'WA', '45125'),
+('John', 'Hall', '3020790459', 'John.Hall@example.com', 58, 'M', '450 Maple St', 'Somewhere', 'NE', '27508'),
+('Donna', 'Lee', '8887600282', 'Donna.Lee@example.com', 20, 'M', '391 Oak St', 'Somewhere', 'OR', '24810'),
+('Charles', 'Thomas', '8987556046', 'Charles.Thomas@example.com', 31, 'F', '666 Elm St', 'Somewhere', 'AL', '59986'),
+('Lisa', 'Williams', '9708526080', 'Lisa.Williams@example.com', 25, 'F', '697 Oak St', 'Somewhere', 'NM', '55088'),
+('David', 'Taylor', '6301567859', 'David.Taylor@example.com', 87, 'F', '719 Maple St', 'Somewhere', 'MN', '18131'),
+('Katherine', 'Thomas', '4193672689', 'Katherine.Thomas@example.com', 40, 'F', '290 Elm St', 'Somewhere', 'RI', '57725'),
+('Mary', 'Scott', '2537732397', 'Mary.Scott@example.com', 25, 'F', '167 Oak St', 'Somewhere', 'NJ', '63315'),
+('Charles', 'Clark', '1291248985', 'Charles.Clark@example.com', 24, 'M', '960 Oak St', 'Somewhere', 'GA', '04929'),
+('Joseph', 'Miller', '0207559617', 'Joseph.Miller@example.com', 32, 'F', '958 Oak St', 'Somewhere', 'FL', '64602'),
+('Sharon', 'Williams', '2193879032', 'Sharon.Williams@example.com', 90, 'F', '554 Elm St', 'Somewhere', 'MN', '99020'),
+('Sharon', 'Johnson', '3360251916', 'Sharon.Johnson@example.com', 40, 'M', '409 Maple St', 'Somewhere', 'CO', '38047'),
+('Jennifer', 'Lee', '6672051516', 'Jennifer.Lee@example.com', 52, 'F', '529 Oak St', 'Somewhere', 'NH', '61533'),
+('Andrew', 'Garcia', '7922587215', 'Andrew.Garcia@example.com', 50, 'F', '284 Maple St', 'Somewhere', 'MO', '46628'),
+('Sarah', 'Smith', '1238653615', 'Sarah.Smith@example.com', 49, 'F', '790 Maple St', 'Somewhere', 'MT', '57252'),
+('William', 'Moore', '9009327341', 'William.Moore@example.com', 75, 'F', '317 Elm St', 'Somewhere', 'NM', '88343'),
+('Michael', 'Brown', '2192590259', 'Michael.Brown@example.com', 97, 'F', '373 Oak St', 'Somewhere', 'MN', '19175'),
+('Elizabeth', 'Williams', '1499416941', 'Elizabeth.Williams@example.com', 22, 'M', '659 Oak St', 'Somewhere', 'SD', '61478'),
+('Donna', 'Allen', '2264252529', 'Donna.Allen@example.com', 19, 'F', '842 Oak St', 'Somewhere', 'OR', '21985'),
+('Patricia', 'Taylor', '6086364561', 'Patricia.Taylor@example.com', 71, 'F', '754 Maple St', 'Somewhere', 'IN', '37806'),
+('Joseph', 'Brown', '5301947347', 'Joseph.Brown@example.com', 97, 'M', '857 Oak St', 'Somewhere', 'MI', '72469'),
+('Charles', 'Moore', '6327378984', 'Charles.Moore@example.com', 18, 'F', '799 Oak St', 'Somewhere', 'WY', '03586'),
+('Michael', 'White', '1822448422', 'Michael.White@example.com', 25, 'F', '956 Maple St', 'Somewhere', 'NC', '97298'),
+('Susan', 'Garcia', '7593670277', 'Susan.Garcia@example.com', 94, 'F', '956 Maple St', 'Somewhere', 'WV', '58950'),
+('Sharon', 'Harris', '7904695018', 'Sharon.Harris@example.com', 30, 'F', '320 Oak St', 'Somewhere', 'KS', '28069'),
+('Robert', 'Brown', '2543430963', 'Robert.Brown@example.com', 24, 'F', '630 Maple St', 'Somewhere', 'MN', '26532'),
+('Patricia', 'Robinson', '1515068868', 'Patricia.Robinson@example.com', 59, 'F', '626 Oak St', 'Somewhere', 'AZ', '86258'),
+('Robert', 'Robinson', '6517182000', 'Robert.Robinson@example.com', 42, 'F', '308 Elm St', 'Somewhere', 'UT', '52307'),
+('James', 'Wilson', '2239802132', 'James.Wilson@example.com', 74, 'M', '805 Maple St', 'Somewhere', 'TN', '57864'),
+('Paul', 'Young', '1358811469', 'Paul.Young@example.com', 77, 'F', '207 Oak St', 'Somewhere', 'SD', '20742'),
+('James', 'Miller', '8695979759', 'James.Miller@example.com', 31, 'F', '562 Elm St', 'Somewhere', 'UT', '00112'),
+('John', 'Martin', '2949985452', 'John.Martin@example.com', 59, 'F', '468 Elm St', 'Somewhere', 'PA', '03384'),
+('William', 'Anderson', '1562673657', 'William.Anderson@example.com', 100, 'M', '450 Oak St', 'Somewhere', 'WI', '50563'),
+('Lisa', 'Anderson', '0476610559', 'Lisa.Anderson@example.com', 88, 'M', '246 Oak St', 'Somewhere', 'IA', '56732'),
+('Andrew', 'Johnson', '2953042671', 'Andrew.Johnson@example.com', 83, 'F', '868 Oak St', 'Somewhere', 'NV', '39126'),
+('Jennifer', 'Walker', '1929088544', 'Jennifer.Walker@example.com', 57, 'F', '753 Maple St', 'Somewhere', 'IN', '21857'),
+('William', 'Wilson', '1064936211', 'William.Wilson@example.com', 36, 'F', '596 Maple St', 'Somewhere', 'SC', '30181'),
+('Katherine', 'Taylor', '4653685827', 'Katherine.Taylor@example.com', 31, 'M', '824 Elm St', 'Somewhere', 'CO', '84109'),
+('John', 'Miller', '8061477875', 'John.Miller@example.com', 63, 'M', '140 Oak St', 'Somewhere', 'RI', '63696'),
+('Jessica', 'Walker', '3113754393', 'Jessica.Walker@example.com', 95, 'M', '357 Elm St', 'Somewhere', 'WV', '65072'),
+('Mark', 'Walker', '0146062395', 'Mark.Walker@example.com', 33, 'F', '214 Oak St', 'Somewhere', 'AZ', '07712'),
+('Susan', 'Robinson', '3753099887', 'Susan.Robinson@example.com', 95, 'M', '159 Maple St', 'Somewhere', 'NJ', '05905'),
+('Mark', 'Wilson', '9999817760', 'Mark.Wilson@example.com', 22, 'F', '378 Oak St', 'Somewhere', 'IL', '40824'),
+('Karen', 'Miller', '4930127771', 'Karen.Miller@example.com', 94, 'M', '489 Maple St', 'Somewhere', 'MI', '15443'),
+('Andrew', 'White', '3219976140', 'Andrew.White@example.com', 73, 'M', '911 Oak St', 'Somewhere', 'CO', '67399'),
+('Elizabeth', 'Walker', '0096932316', 'Elizabeth.Walker@example.com', 100, 'M', '736 Elm St', 'Somewhere', 'GA', '98578'),
+('William', 'Jones', '6585124814', 'William.Jones@example.com', 23, 'M', '252 Oak St', 'Somewhere', 'MS', '50203'),
+('Sarah', 'King', '9179540215', 'Sarah.King@example.com', 56, 'F', '675 Maple St', 'Somewhere', 'MI', '58640'),
+('Lisa', 'Taylor', '2255894955', 'Lisa.Taylor@example.com', 21, 'F', '473 Maple St', 'Somewhere', 'MS', '16032'),
+('Susan', 'Harris', '6549190403', 'Susan.Harris@example.com', 20, 'F', '363 Elm St', 'Somewhere', 'ND', '06244'),
+('Elizabeth', 'Johnson', '4942024227', 'Elizabeth.Johnson@example.com', 64, 'F', '607 Elm St', 'Somewhere', 'HI', '09936'),
+('Jessica', 'Smith', '9252787168', 'Jessica.Smith@example.com', 83, 'M', '118 Maple St', 'Somewhere', 'OH', '99708'),
+('Margaret', 'Davis', '2063733539', 'Margaret.Davis@example.com', 41, 'F', '994 Oak St', 'Somewhere', 'CO', '08462'),
+('Jessica', 'Young', '9182138014', 'Jessica.Young@example.com', 51, 'F', '358 Oak St', 'Somewhere', 'DE', '85729'),
+('Elizabeth', 'Clark', '5390337652', 'Elizabeth.Clark@example.com', 22, 'M', '121 Maple St', 'Somewhere', 'AZ', '14681'),
+('Andrew', 'Robinson', '8116393469', 'Andrew.Robinson@example.com', 72, 'F', '355 Oak St', 'Somewhere', 'CT', '17058'),
+('Mary', 'Williams', '5525663090', 'Mary.Williams@example.com', 91, 'M', '724 Elm St', 'Somewhere', 'CA', '21610'),
+('Mark', 'Thompson', '1556959105', 'Mark.Thompson@example.com', 47, 'F', '250 Elm St', 'Somewhere', 'WA', '83891'),
+('Paul', 'Allen', '1737326682', 'Paul.Allen@example.com', 62, 'M', '616 Oak St', 'Somewhere', 'VA', '56819'),
+('Joseph', 'Martinez', '1806010695', 'Joseph.Martinez@example.com', 65, 'F', '125 Elm St', 'Somewhere', 'NE', '51069'),
+('Linda', 'Hill', '9975248639', 'Linda.Hill@example.com', 85, 'F', '639 Oak St', 'Somewhere', 'TN', '33139'),
+('William', 'Miller', '0628109747', 'William.Miller@example.com', 87, 'M', '807 Elm St', 'Somewhere', 'WV', '82414'),
+('Patricia', 'White', '2352190948', 'Patricia.White@example.com', 97, 'M', '366 Oak St', 'Somewhere', 'RI', '26133'),
+('Donna', 'Anderson', '4838410637', 'Donna.Anderson@example.com', 44, 'F', '292 Oak St', 'Somewhere', 'ND', '39420'),
+('Christopher', 'Taylor', '7621149933', 'Christopher.Taylor@example.com', 31, 'F', '381 Elm St', 'Somewhere', 'OR', '21575'),
+('Charles', 'Anderson', '9090535903', 'Charles.Anderson@example.com', 18, 'M', '559 Oak St', 'Somewhere', 'OR', '45625'),
+('Michael', 'King', '8415354303', 'Michael.King@example.com', 54, 'F', '971 Oak St', 'Somewhere', 'OK', '13503'),
+('Matthew', 'Wilson', '8932729827', 'Matthew.Wilson@example.com', 69, 'F', '531 Oak St', 'Somewhere', 'NM', '27449'),
+('James', 'Garcia', '8207206261', 'James.Garcia@example.com', 35, 'M', '442 Maple St', 'Somewhere', 'CO', '55146'),
+('Lisa', 'Brown', '8448294406', 'Lisa.Brown@example.com', 57, 'F', '647 Elm St', 'Somewhere', 'HI', '53693'),
+('Margaret', 'Robinson', '4178109829', 'Margaret.Robinson@example.com', 72, 'M', '532 Oak St', 'Somewhere', 'AK', '64254'),
+('Thomas', 'Scott', '5037772351', 'Thomas.Scott@example.com', 93, 'F', '642 Maple St', 'Somewhere', 'CT', '43390'),
+('Sarah', 'Garcia', '0610036205', 'Sarah.Garcia@example.com', 69, 'M', '904 Elm St', 'Somewhere', 'VT', '16112'),
+('Michael', 'Jackson', '1863948508', 'Michael.Jackson@example.com', 70, 'M', '217 Oak St', 'Somewhere', 'VT', '93094'),
+('Matthew', 'Jones', '5058949825', 'Matthew.Jones@example.com', 85, 'F', '259 Maple St', 'Somewhere', 'MD', '48270'),
+('Joseph', 'Anderson', '7386233048', 'Joseph.Anderson@example.com', 28, 'F', '312 Elm St', 'Somewhere', 'IL', '57011'),
+('David', 'Lee', '5882399707', 'David.Lee@example.com', 63, 'F', '205 Maple St', 'Somewhere', 'TN', '69478'),
+('Katherine', 'Smith', '6163251297', 'Katherine.Smith@example.com', 21, 'F', '615 Oak St', 'Somewhere', 'MO', '45906'),
+('Michael', 'Martin', '8089435032', 'Michael.Martin@example.com', 48, 'F', '522 Oak St', 'Somewhere', 'UT', '99956'),
+('Mark', 'Brown', '2386616052', 'Mark.Brown@example.com', 100, 'M', '462 Elm St', 'Somewhere', 'IL', '82037'),
+('Elizabeth', 'Jackson', '7143363021', 'Elizabeth.Jackson@example.com', 54, 'M', '317 Maple St', 'Somewhere', 'CA', '24682'),
+('William', 'White', '2679763092', 'William.White@example.com', 34, 'F', '249 Maple St', 'Somewhere', 'IN', '60890'),
+('William', 'Robinson', '6506641495', 'William.Robinson@example.com', 88, 'M', '570 Elm St', 'Somewhere', 'CO', '00512'),
+('Sharon', 'Jones', '0197519581', 'Sharon.Jones@example.com', 93, 'M', '326 Maple St', 'Somewhere', 'VA', '74454'),
+('Patricia', 'Garcia', '9728700164', 'Patricia.Garcia@example.com', 35, 'M', '100 Oak St', 'Somewhere', 'PA', '76500'),
+('Joseph', 'Hall', '5034815810', 'Joseph.Hall@example.com', 95, 'F', '567 Oak St', 'Somewhere', 'OR', '30249'),
+('Linda', 'Walker', '1638552917', 'Linda.Walker@example.com', 49, 'M', '377 Maple St', 'Somewhere', 'MA', '62499'),
+('Matthew', 'Allen', '6042270643', 'Matthew.Allen@example.com', 22, 'F', '737 Elm St', 'Somewhere', 'OR', '86286'),
+('Margaret', 'Garcia', '2317630675', 'Margaret.Garcia@example.com', 35, 'F', '652 Elm St', 'Somewhere', 'AZ', '23882'),
+('William', 'Martin', '9071955413', 'William.Martin@example.com', 45, 'F', '921 Elm St', 'Somewhere', 'WI', '61025'),
+('Katherine', 'Garcia', '9059026305', 'Katherine.Garcia@example.com', 83, 'M', '440 Maple St', 'Somewhere', 'MI', '70206'),
+('Margaret', 'Thompson', '4762402408', 'Margaret.Thompson@example.com', 97, 'M', '683 Oak St', 'Somewhere', 'NJ', '49666'),
+('Daniel', 'Young', '5869860990', 'Daniel.Young@example.com', 33, 'F', '662 Elm St', 'Somewhere', 'UT', '33555'),
+('Andrew', 'Martin', '6061106814', 'Andrew.Martin@example.com', 88, 'F', '871 Elm St', 'Somewhere', 'SC', '77520'),
+('David', 'Jones', '0068557782', 'David.Jones@example.com', 53, 'F', '255 Oak St', 'Somewhere', 'AZ', '42034'),
+('Charles', 'Scott', '8935647109', 'Charles.Scott@example.com', 77, 'M', '980 Elm St', 'Somewhere', 'MN', '63707');
+
+INSERT INTO Pet (CustomerID, PetName, Species, Breed, Weight, HairType, Gender, Vaxed)
+VALUES
+(1, 'Nala', 'Dog', 'Bulldog', 44.4, 'L', 'F', 1),
+(2, 'Max', 'Cat', 'Sphynx', 67.6, 'L', 'M', 1),
+(3, 'Gracie', 'Cat', 'Maine Coon', 69.3, 'S', 'F', 1),
+(4, 'Maggie', 'Dog', 'Labrador Retriever', 27.3, 'L', 'F', 1),
+(5, 'Bear', 'Dog', 'German Shepherd', 28.1, 'L', 'M', 1),
+(6, 'Molly', 'Dog', 'Bulldog', 32.3, 'S', 'F', 1),
+(7, 'Coco', 'Cat', 'Persian', 41.1, 'L', 'M', 1),
+(8, 'Sadie', 'Cat', 'Sphynx', 22.3, 'S', 'F', 1),
+(9, 'Koda', 'Dog', 'German Shepherd', 84.8, 'S', 'M', 1),
+(10, 'Lucky', 'Cat', 'Siamese', 32.0, 'S', 'M', 1),
+(11, 'Kitty', 'Cat', 'Bengal', 92.7, 'S', 'F', 1),
+(12, 'Ollie', 'Dog', 'Golden Retriever', 21.6, 'L', 'F', 1),
+(13, 'Cleo', 'Cat', 'Siamese', 23.2, 'L', 'F', 1),
+(14, 'Chloe', 'Cat', 'Sphynx', 22.9, 'L', 'F', 1),
+(15, 'Smokey', 'Dog', 'Labrador Retriever', 66.8, 'L', 'F', 1),
+(16, 'Lenny', 'Cat', 'Maine Coon', 89.9, 'L', 'M', 1),
+(17, 'Simba', 'Cat', 'Bengal', 34.1, 'L', 'F', 1),
+(18, 'Gracie', 'Dog', 'German Shepherd', 77.8, 'S', 'F', 1),
+(19, 'Koda', 'Dog', 'German Shepherd', 68.4, 'L', 'M', 1),
+(20, 'Ginger', 'Dog', 'Poodle', 65.3, 'S', 'F', 1),
+(21, 'Kiki', 'Dog', 'Poodle', 49.1, 'S', 'F', 1),
+(22, 'Maggie', 'Cat', 'Persian', 41.5, 'L', 'M', 1),
+(23, 'Milo', 'Dog', 'German Shepherd', 20.9, 'S', 'F', 1),
+(24, 'Apollo', 'Dog', 'Golden Retriever', 77.0, 'L', 'M', 1),
+(25, 'Ginger', 'Cat', 'Maine Coon', 96.1, 'L', 'F', 1),
+(26, 'Frankie', 'Cat', 'Maine Coon', 28.7, 'S', 'F', 1),
+(27, 'Murphy', 'Dog', 'Poodle', 63.2, 'L', 'F', 1),
+(28, 'Molly', 'Cat', 'Sphynx', 99.5, 'S', 'F', 1),
+(29, 'Leo', 'Dog', 'Labrador Retriever', 71.1, 'S', 'M', 1),
+(30, 'Finn', 'Cat', 'Maine Coon', 60.4, 'L', 'F', 1),
+(31, 'Maddie', 'Dog', 'Golden Retriever', 14.8, 'S', 'F', 1),
+(32, 'Jax', 'Cat', 'Bengal', 88.0, 'S', 'F', 1),
+(33, 'Roxy', 'Cat', 'Maine Coon', 36.2, 'L', 'F', 1),
+(34, 'Rosie', 'Cat', 'Siamese', 77.5, 'L', 'F', 1),
+(35, 'Molly', 'Cat', 'Siamese', 74.6, 'L', 'F', 1),
+(36, 'Roxy', 'Dog', 'Bulldog', 15.3, 'L', 'M', 1),
+(37, 'Daisy', 'Cat', 'Maine Coon', 45.6, 'S', 'M', 1),
+(38, 'Bentley', 'Cat', 'Maine Coon', 77.0, 'L', 'M', 1),
+(39, 'Bentley', 'Cat', 'Siamese', 70.8, 'S', 'F', 1),
+(40, 'Mimi', 'Cat', 'Sphynx', 11.2, 'L', 'M', 1),
+(41, 'Bella', 'Cat', 'Maine Coon', 6.7, 'S', 'M', 1),
+(42, 'Milo', 'Dog', 'Labrador Retriever', 72.6, 'S', 'F', 1),
+(43, 'Nala', 'Dog', 'Golden Retriever', 95.6, 'S', 'M', 1),
+(44, 'Jax', 'Cat', 'Maine Coon', 7.4, 'L', 'M', 1),
+(45, 'Cooper', 'Dog', 'Poodle', 83.8, 'L', 'M', 1),
+(46, 'Charlie', 'Cat', 'Maine Coon', 13.6, 'L', 'M', 1),
+(47, 'Teddy', 'Dog', 'Bulldog', 23.1, 'L', 'F', 1),
+(48, 'Chloe', 'Dog', 'Bulldog', 91.0, 'L', 'M', 1),
+(49, 'Bella', 'Dog', 'Golden Retriever', 48.0, 'S', 'F', 1),
+(50, 'Murphy', 'Cat', 'Persian', 80.2, 'S', 'M', 1),
+(51, 'Penny', 'Dog', 'Labrador Retriever', 50.3, 'L', 'F', 1),
+(52, 'Baxter', 'Cat', 'Maine Coon', 97.5, 'L', 'M', 1),
+(53, 'Oliver', 'Cat', 'Maine Coon', 56.6, 'S', 'M', 1),
+(54, 'Princess', 'Cat', 'Siamese', 72.0, 'S', 'F', 1),
+(55, 'Lily', 'Cat', 'Siamese', 61.0, 'L', 'M', 1),
+(56, 'Lily', 'Cat', 'Persian', 18.5, 'L', 'M', 1),
+(57, 'Abby', 'Dog', 'Poodle', 73.9, 'L', 'F', 1),
+(58, 'Harley', 'Cat', 'Sphynx', 44.1, 'L', 'M', 1),
+(59, 'Oscar', 'Cat', 'Persian', 11.2, 'L', 'F', 1),
+(60, 'Baxter', 'Cat', 'Maine Coon', 29.0, 'S', 'M', 1),
+(61, 'Harley', 'Cat', 'Bengal', 35.0, 'L', 'M', 1),
+(62, 'Boomer', 'Cat', 'Persian', 73.7, 'S', 'F', 1),
+(63, 'Smokey', 'Cat', 'Maine Coon', 17.2, 'S', 'M', 1),
+(64, 'Nala', 'Dog', 'Poodle', 98.3, 'L', 'F', 1),
+(65, 'Kitty', 'Dog', 'Poodle', 58.8, 'S', 'M', 1),
+(66, 'Princess', 'Cat', 'Siamese', 68.1, 'S', 'F', 1),
+(67, 'Lily', 'Cat', 'Bengal', 50.1, 'L', 'F', 1),
+(68, 'Kitty', 'Cat', 'Sphynx', 78.3, 'S', 'M', 1),
+(69, 'Bentley', 'Cat', 'Persian', 38.5, 'L', 'F', 1),
+(70, 'Nala', 'Dog', 'Bulldog', 7.6, 'S', 'M', 1),
+(71, 'Molly', 'Cat', 'Sphynx', 67.4, 'L', 'M', 1),
+(72, 'Teddy', 'Cat', 'Siamese', 51.1, 'L', 'F', 1),
+(73, 'Winston', 'Dog', 'Labrador Retriever', 74.8, 'L', 'F', 1),
+(74, 'Lily', 'Cat', 'Bengal', 45.3, 'L', 'F', 1),
+(75, 'Cali', 'Dog', 'German Shepherd', 56.0, 'S', 'F', 1),
+(76, 'Rosie', 'Dog', 'Golden Retriever', 36.7, 'S', 'M', 1),
+(77, 'Nala', 'Dog', 'German Shepherd', 11.7, 'L', 'M', 1),
+(78, 'Sadie', 'Cat', 'Bengal', 18.0, 'L', 'F', 1),
+(79, 'Maddie', 'Dog', 'Bulldog', 30.0, 'S', 'F', 1),
+(80, 'Maddie', 'Cat', 'Persian', 55.7, 'S', 'F', 1),
+(81, 'Molly', 'Dog', 'Golden Retriever', 33.6, 'L', 'M', 1),
+(82, 'Roxy', 'Cat', 'Sphynx', 2.2, 'L', 'F', 1),
+(83, 'Bentley', 'Dog', 'Labrador Retriever', 46.0, 'S', 'F', 1),
+(84, 'Boots', 'Dog', 'German Shepherd', 59.1, 'S', 'M', 1),
+(85, 'Loki', 'Dog', 'Bulldog', 72.5, 'L', 'F', 1),
+(86, 'Max', 'Dog', 'Bulldog', 28.2, 'S', 'F', 1),
+(87, 'Gizmo', 'Dog', 'German Shepherd', 43.4, 'L', 'F', 1),
+(88, 'Abby', 'Dog', 'Poodle', 31.8, 'S', 'M', 1),
+(89, 'Toby', 'Cat', 'Sphynx', 18.4, 'S', 'F', 1),
+(90, 'Simba', 'Cat', 'Maine Coon', 73.8, 'S', 'M', 1),
+(91, 'Rocky', 'Dog', 'German Shepherd', 62.9, 'S', 'F', 1),
+(92, 'Koda', 'Cat', 'Maine Coon', 53.8, 'L', 'M', 1),
+(93, 'Lucky', 'Dog', 'Golden Retriever', 53.4, 'L', 'M', 1),
+(94, 'Winston', 'Dog', 'Labrador Retriever', 65.6, 'L', 'M', 1),
+(95, 'Bentley', 'Cat', 'Persian', 67.5, 'S', 'M', 1),
+(96, 'Toby', 'Cat', 'Sphynx', 59.5, 'L', 'F', 1),
+(97, 'Gracie', 'Dog', 'Poodle', 7.6, 'L', 'M', 1),
+(98, 'Hazel', 'Cat', 'Persian', 87.1, 'L', 'M', 1),
+(99, 'Max', 'Dog', 'Labrador Retriever', 85.9, 'L', 'M', 1),
+(100, 'Jasper', 'Cat', 'Siamese', 7.5, 'S', 'M', 1);
+
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 52, 52, '2022-11-29 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 54, 54, '2023-05-31 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 17, 17, '2022-11-22 16:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 19, 19, '2023-06-17 16:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 58, 58, '2023-07-10 11:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 32, 32, '2022-12-24 13:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 48, 48, '2023-04-22 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 46, 46, '2023-04-27 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 20, 20, '2023-01-23 08:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 30, 30, '2022-12-21 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 42, 42, '2023-03-17 10:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 25, 25, '2023-07-14 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 70, 70, '2023-08-23 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 68, 68, '2023-06-04 09:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 61, 61, '2023-07-11 11:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 87, 87, '2023-02-20 15:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 50, 50, '2023-01-02 12:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 32, 32, '2023-05-14 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 44, 44, '2022-10-18 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 91, 91, '2023-09-10 11:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 15, 15, '2023-08-05 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 37, 37, '2022-12-11 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 68, 68, '2023-01-16 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 53, 53, '2023-02-25 08:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 11, 11, '2023-03-12 14:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 90, 90, '2022-11-23 08:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 18, 18, '2023-07-17 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 33, 33, '2023-07-18 09:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 18, 18, '2023-05-17 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 35, 35, '2023-01-11 11:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 99, 99, '2023-01-06 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 13, 13, '2023-08-28 12:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 76, 76, '2023-02-07 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 73, 73, '2023-01-27 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 67, 67, '2023-08-11 11:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 93, 93, '2023-03-07 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 10, 10, '2023-05-29 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 67, 67, '2023-04-02 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 7, 7, '2023-01-08 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 98, 98, '2022-12-06 13:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 86, 86, '2022-11-07 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 28, 28, '2023-07-05 16:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 98, 98, '2023-02-03 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 23, 23, '2022-11-18 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 87, 87, '2022-11-20 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 40, 40, '2023-03-11 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 20, 20, '2023-02-26 08:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 49, 49, '2023-03-19 13:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 45, 45, '2023-09-10 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 10, 10, '2023-02-10 14:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 23, 23, '2023-09-19 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 55, 55, '2022-10-16 09:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 86, 86, '2023-01-04 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 56, 56, '2023-03-02 08:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 27, 27, '2023-03-18 15:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 37, 37, '2023-09-15 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 65, 65, '2022-12-10 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 7, 7, '2023-07-18 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 95, 95, '2023-08-05 08:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 77, 77, '2023-03-21 12:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 7, 7, '2023-05-16 11:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 15, 15, '2023-01-10 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 11, 11, '2023-04-20 10:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 52, 52, '2023-05-27 11:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 46, 46, '2023-01-31 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 2, 2, '2023-07-03 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 7, 7, '2023-03-11 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 34, 34, '2023-10-02 11:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 97, 97, '2022-11-21 16:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 92, 92, '2023-02-13 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 53, 53, '2022-12-04 14:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 90, 90, '2023-02-26 13:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 13, 13, '2023-07-18 16:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 21, 21, '2023-09-04 11:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 18, 18, '2023-06-11 11:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 50, 50, '2023-03-20 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 89, 89, '2023-07-22 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 9, 9, '2023-03-16 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 48, 48, '2022-12-05 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 33, 33, '2023-06-02 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 29, 29, '2022-10-28 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 61, 61, '2023-05-23 15:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 96, 96, '2023-05-10 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 30, 30, '2023-09-28 11:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 68, 68, '2022-12-24 15:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 47, 47, '2023-03-24 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 48, 48, '2023-09-23 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 80, 80, '2023-08-07 15:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 56, 56, '2023-06-02 14:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 95, 95, '2023-07-18 11:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 87, 87, '2023-06-18 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 92, 92, '2023-01-01 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 4, 4, '2023-09-05 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 95, 95, '2023-10-09 14:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 96, 96, '2023-06-20 10:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 63, 63, '2023-08-16 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 59, 59, '2023-02-17 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 62, 62, '2023-05-20 15:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 6, 6, '2023-03-07 08:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 43, 43, '2023-10-03 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 51, 51, '2022-12-10 11:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 34, 34, '2023-01-12 10:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 62, 62, '2023-05-25 16:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 83, 83, '2022-11-09 15:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 13, 13, '2023-07-04 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 63, 63, '2022-12-29 08:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 78, 78, '2023-02-23 12:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 29, 29, '2023-01-26 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 6, 6, '2023-07-06 12:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 97, 97, '2023-04-11 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 84, 84, '2023-03-16 08:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 40, 40, '2023-06-16 13:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 84, 84, '2023-02-17 15:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 72, 72, '2023-07-09 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 57, 57, '2023-08-14 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 35, 35, '2023-07-07 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 3, 3, '2022-12-07 12:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 63, 63, '2023-02-22 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 29, 29, '2023-02-20 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 30, 30, '2023-01-14 13:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 1, 1, '2023-04-27 12:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 5, 5, '2023-01-16 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 38, 38, '2023-01-21 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 99, 99, '2022-12-01 08:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 69, 69, '2023-08-28 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 8, 8, '2023-04-05 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 7, 7, '2023-03-09 12:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 37, 37, '2023-01-11 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 65, 65, '2023-07-31 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 53, 53, '2023-06-13 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 37, 37, '2023-09-23 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 93, 93, '2022-12-21 12:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 65, 65, '2023-02-09 15:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 12, 12, '2022-11-15 12:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 14, 14, '2022-12-10 16:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 85, 85, '2022-10-22 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 74, 74, '2023-04-16 15:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 97, 97, '2022-11-19 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 13, 13, '2023-05-01 09:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 40, 40, '2023-03-28 16:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 54, 54, '2023-02-05 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 30, 30, '2023-06-07 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 61, 61, '2023-04-07 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 44, 44, '2023-09-11 08:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 73, 73, '2023-03-14 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 61, 61, '2023-01-09 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 83, 83, '2023-10-02 10:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 6, 6, '2022-10-19 12:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 65, 65, '2023-05-01 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 12, 12, '2023-05-19 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 23, 23, '2023-07-06 08:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 80, 80, '2023-04-16 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 82, 82, '2023-01-31 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 19, 19, '2023-09-07 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 8, 8, '2023-09-26 09:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 13, 13, '2023-04-18 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 3, 3, '2022-12-04 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 54, 54, '2023-09-27 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 83, 83, '2023-01-18 12:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 35, 35, '2023-09-18 11:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 36, 36, '2023-03-14 08:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 11, 11, '2022-11-07 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 20, 20, '2023-04-12 11:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 31, 31, '2023-02-06 08:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 60, 60, '2023-05-15 13:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 86, 86, '2022-12-28 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 92, 92, '2023-02-11 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 53, 53, '2023-03-08 14:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 23, 23, '2023-04-07 16:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 13, 13, '2023-08-10 14:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 9, 9, '2023-07-01 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 23, 23, '2022-10-24 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 41, 41, '2023-08-20 12:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 51, 51, '2023-06-09 14:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 60, 60, '2023-10-03 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 11, 11, '2023-04-27 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 68, 68, '2022-10-21 09:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 44, 44, '2022-12-19 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 13, 13, '2023-01-11 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 54, 54, '2023-04-01 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 52, 52, '2023-02-23 15:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 29, 29, '2023-03-16 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 45, 45, '2023-06-24 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 56, 56, '2023-01-28 10:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 95, 95, '2023-02-15 09:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 46, 46, '2023-06-05 14:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(4, 9, 9, '2022-12-06 14:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 49, 49, '2023-09-03 13:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(6, 85, 85, '2023-09-01 08:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 24, 24, '2023-07-27 14:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 1, 1, '2022-10-15 15:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(9, 29, 29, '2023-06-16 11:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 53, 53, '2023-08-22 13:00:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 25, 25, '2023-01-05 10:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 48, 48, '2023-07-29 10:00:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(8, 31, 31, '2023-08-12 12:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(3, 98, 98, '2023-10-06 09:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(10, 76, 76, '2022-10-22 11:30:00', 0, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(7, 66, 66, '2023-05-14 14:30:00', 1, 0, 0);
+INSERT INTO Appointment (EmployeeID, CustomerID, PetID, DateTime, WalkIn, BasePrice, AdditionalServicePrice) VALUES(5, 18, 18, '2023-06-16 16:00:00', 0, 0, 0);
+
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 23);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 84);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 158);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 116);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 135);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 158);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 70);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 112);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 155);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 74);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 74);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 162);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 85);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 72);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 94);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 98);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 30);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 21);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 183);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 45);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 33);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 73);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 144);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 28);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 151);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 27);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 132);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 22);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 83);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 109);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 122);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 87);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 112);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 54);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 45);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 70);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 5);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 31);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 135);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 91);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 125);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 71);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 22);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 134);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 59);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 138);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 153);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 152);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 19);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 31);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 125);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 172);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 23);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 184);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 77);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 146);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 106);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 88);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 48);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 78);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 137);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 150);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 33);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 139);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 180);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 69);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 69);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 151);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 125);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 18);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 119);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 164);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 90);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 98);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 59);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 102);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 1);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 186);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 87);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 65);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 153);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 170);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 171);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 67);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 63);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 75);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 94);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 123);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 20);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 77);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 168);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 182);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 95);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 131);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 32);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 50);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 95);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 31);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 29);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 30);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 148);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 161);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 107);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 143);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 171);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 120);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 156);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 49);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 127);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 8);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 140);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 95);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 130);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 51);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 186);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 185);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 117);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 148);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 137);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 165);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 44);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 6);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 39);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 179);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 4);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 128);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 109);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 165);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 197);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 118);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 82);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 68);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 163);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 131);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 19);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 169);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 88);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 183);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 116);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 38);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 45);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 196);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 120);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 6);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 68);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 133);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 113);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 90);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 47);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 171);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 170);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 65);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 121);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 107);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 86);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 90);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 6);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 140);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 118);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 88);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 113);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 98);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 106);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 194);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 93);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 3);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 106);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 31);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 75);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 79);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 29);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 127);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 170);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 61);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 184);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 119);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 71);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 105);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 191);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 170);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 27);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 16);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 69);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 157);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 188);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 119);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 59);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 42);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 170);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 51);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 67);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 6);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 200);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 181);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 42);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 132);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 2);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 14);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 7);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 54);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 112);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 124);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 183);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 105);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 95);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 145);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 35);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 24);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 40);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 25);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 176);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 113);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 29);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 180);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 94);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 10);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 199);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 5);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 188);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 104);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 125);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 152);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 197);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 126);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 134);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 182);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 36);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 45);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 187);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 98);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 180);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 118);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 74);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 2);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 133);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 48);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 93);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 11);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 149);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 178);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 173);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 24);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 73);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 146);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 100);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 40);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 76);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 145);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 152);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 161);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 42);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 136);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 161);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 43);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 157);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 143);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 9);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 64);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 140);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 105);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 39);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 34);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 2);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (13, 1);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 152);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 112);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (10, 64);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 81);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 31);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 90);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 189);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 184);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 28);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 85);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (14, 9);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 153);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 86);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 144);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 180);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (12, 152);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (3, 43);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 122);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 173);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 63);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 176);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 20);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 112);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (9, 94);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 110);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (4, 182);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 45);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 163);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (5, 30);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (2, 187);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (11, 200);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (6, 81);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 171);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (7, 14);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (8, 187);
+INSERT INTO AppointmentServices (ServiceCodeID, AppointmentID) VALUES (1, 133);
