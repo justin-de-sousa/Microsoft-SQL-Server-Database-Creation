@@ -110,3 +110,18 @@ Once the tables were created and the functions and triggers were implemented the
 ________________________________________
 
 **Database Testing and Querying**
+
+The database should now be fully functioning so to make sure everything is working as intended the next step is to try to use the database to answer questions the business would want to know. The first thing to do is make sure the triggers and functions did their job when the appointment and additional service entries were inserted. This can be checked with a query selecting the top 3 customers by number of appointments and looking at all the additional services they used as well as the price recorded for the additional service value. 
+
+<p align="center"><strong>SQL Query checking Triggers and Fuctions</strong></p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/7113deb81336778a22061b4ac017523f6053c26b/Assets/query_checking_triggers_functions.png" width="99%"/>
+</p>
+
+<p align="center"><strong>Output of Query in SQL</strong></p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/7113deb81336778a22061b4ac017523f6053c26b/Assets/Query_1_output.png" width="90%"/>
+</p>
+
+The output allows for confirmation of the function and triggers working correctly. The additional service values for “Appointment” table entries is the sum of all the additional services in the “AppointmentServices” table associated with that appointment. The following will not be examples of questions a Bo Jangles employee may want to answer using the database. 
+
