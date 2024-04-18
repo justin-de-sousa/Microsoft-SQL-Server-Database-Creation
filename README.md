@@ -68,7 +68,7 @@ The function to calculate the base price is a fairly simple if statement designe
 </p>
 
 
-<p align="center"><strong>Trigger Which Calls "GetBasePrice" Function when an Appointment Insert Occurs</strong></p>
+<p align="center"><strong>Trigger which calls "GetBasePrice" Function when an Appointment Insert Occurs</strong></p>
 <p align="center">
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/6d7da71c31e93593bca47a9eed4f7a145718b420/Assets/set_base_price_trigger.png" alt="Set Base Price Trigger" width="80%"/>
 </p>
@@ -86,3 +86,15 @@ This time the function to calculate the additional service price will take an ap
 <p align="center"> 
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/bc46f17f585aa76bde6fadaca13b31f6d0c9195f/Assets/additional_service_price_function.png" alt="Set Base Price Trigger" width="80%"/>
 </p>
+
+The trigger which will call on this function will activate whenever an entry is inserted into the “AppointmentServices” table. This will ensure that as each additional service for an appointment is inserted into the database the AdditionalServicePrice value in the “Appointment” table will be updated and accurate.
+
+<p align="center"><strong>Trigger which calls "SetAdditionalServicePrice" when an Additional Service is Instered</strong></p>
+<p align="center"> 
+<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/c8fb5b9f7c703f4916d9712da09e98f8bc5a6f58/Assets/additional_service_trigger.png" alt="Set Base Price Trigger" width="80%"/>
+</p>
+
+________________________________________
+
+**Data Insertion**
+
