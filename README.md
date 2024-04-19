@@ -124,7 +124,7 @@ The database should now be fully functioning so to make sure everything is worki
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/7113deb81336778a22061b4ac017523f6053c26b/Assets/Query_1_output.png" width="90%"/>
 </p>
 
-The output allows for confirmation of the function and triggers working correctly. The additional service values for “Appointment” table entries is the sum of all the additional services in the “AppointmentServices” table associated with that appointment. The following will not be examples of questions a Bo Jangles employee may want to answer using the database. 
+The output allows for confirmation of the function and triggers working correctly. The additional service values for “Appointment” table entries is the sum of all the additional services in the “AppointmentServices” table associated with that appointment. The following will be examples of questions a Bo Jangles employee may want to answer using the database. 
 
 <p align="center"><strong>What clients have not been seen in a year and when were they last seen?</strong></p>
 
