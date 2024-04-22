@@ -326,10 +326,24 @@ ________________________________________
 The database should now be fully functioning so to make sure everything is working as intended the next step is to try to use the database to answer questions the business would want to know. The first thing to do is make sure the triggers and functions did their job when the appointment and additional service entries were inserted. This can be checked with a query selecting the top 3 customers by number of appointments and looking at all the additional services they used as well as the price recorded for the additional service value. 
 
 <p align="center"><strong>SQL Query checking Triggers and Fuctions</strong></p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/7113deb81336778a22061b4ac017523f6053c26b/Assets/query_checking_triggers_functions.png" width="99%"/>
-</p>
 
+```sql
+-- Query to find all appointments and their services for the top 3 customers by appointment count
+WITH FrequentCustomers AS (
+    SELECT TOP 3 a.CustomerID
+    FROM Appointment a
+    GROUP BY a.CustomerID
+    ORDER BY COUNT(*) DESC
+)
+
+SELECT c.FirstName, c.LastName, a.AppointmentID, a.DateTime, asvc.ServiceID, sp.ServiceName, sp.Price
+FROM FrequentCustomers fc
+JOIN Appointment a ON fc.CustomerID = a.CustomerID
+JOIN Customer c ON c.CustomerID = a.CustomerID
+LEFT JOIN AppointmentServices asvc ON asvc.AppointmentID = a.AppointmentID
+LEFT JOIN ServicePricing sp ON sp.ServiceCodeID = asvc.ServiceCodeID
+ORDER BY c.LastName, c.FirstName, a.DateTime;
+```
 <p align="center"><strong>Output of Query in SQL</strong></p>
 <p align="center"> 
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/7113deb81336778a22061b4ac017523f6053c26b/Assets/Query_1_output.png" width="90%"/>
@@ -340,10 +354,23 @@ The output allows for confirmation of the function and triggers working correctl
 <p align="center"><strong>What clients have not been seen in a year and when were they last seen?</strong></p>
 
 <p align="center">Query Code</p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_2_code.png" width="90%"/>
-</p>
 
+```sql
+SELECT
+    C.FirstName AS "ClientFirstName",
+    C.LastName AS "ClientLastName",
+    MAX(A.DateTime) AS "LastSeenDate"
+FROM
+    Customer AS C
+LEFT JOIN
+    Appointment AS A
+ON
+    C.CustomerID = A.CustomerID
+GROUP BY
+    C.FirstName, C.LastName
+HAVING
+    MAX(A.DateTime) IS NULL OR MAX(A.DateTime) < DATEADD(YEAR, -1, GETDATE());
+```
 <p align="center">Query Output</p>
 <p align="center"> 
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_2_output.png" width="90%"/>
@@ -352,10 +379,27 @@ The output allows for confirmation of the function and triggers working correctl
 <p align="center"><strong>What services were performed on pets most often (by species)?</strong></p>
 
 <p align="center">Query Code</p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_3_code.png" width="90%"/>
-</p>
 
+```sql
+SELECT
+    P.Species,
+    SP.ServiceName,
+    COUNT(*) AS ServiceCount
+FROM
+    Pet AS P
+INNER JOIN
+    Appointment AS A ON P.PetID = A.PetID
+INNER JOIN
+    AppointmentServices AS ASV ON A.AppointmentID = ASV.AppointmentID
+INNER JOIN
+    ServicePricing AS SP ON ASV.ServiceCodeID = SP.ServiceCodeID
+GROUP BY
+    P.Species,
+    SP.ServiceName
+ORDER BY
+    P.Species,
+    ServiceCount DESC;
+```
 <p align="center">Query Output</p>
 <p align="center"> 
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_3_output.png" width="80%"/>
@@ -364,10 +408,32 @@ The output allows for confirmation of the function and triggers working correctl
 <p align="center"><strong>Which customers have had the same walk-in service performed multiple times?</strong></p>
 
 <p align="center">Query Code</p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_4_code.png" width="90%"/>
-</p>
 
+```sql
+SELECT
+    C.FirstName,
+    C.LastName,
+    A.CustomerID,
+    ASV.ServiceCodeID,
+    COUNT(*) AS ServiceCount
+FROM
+    Customer AS C
+INNER JOIN
+    Appointment AS A ON C.CustomerID = A.CustomerID
+INNER JOIN
+    AppointmentServices AS ASV ON A.AppointmentID = ASV.AppointmentID
+INNER JOIN
+    ServicePricing AS SP ON ASV.ServiceCodeID = SP.ServiceCodeID
+WHERE
+    A.WalkIn = 1
+GROUP BY
+    C.FirstName,
+    C.LastName,
+    A.CustomerID,
+    ASV.ServiceCodeID
+HAVING
+    COUNT(*) > 1;
+```
 <p align="center">Query Output</p>
 <p align="center"> 
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/2285fd75824d33d4584fd1f499b45ff03082f4ed/Assets/query_4_output.png" width="80%"/>
@@ -376,10 +442,20 @@ The output allows for confirmation of the function and triggers working correctl
 <p align="center"><strong>Who are top 3 employees with the most years of experience?</strong></p>
 
 <p align="center">Query Code</p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/3ebefa5682eec2616741832a9560be6085931690/Assets/query_5_code.png" width="80%"/>
-</p>
 
+```sql
+SELECT TOP 3
+    FirstName AS "EmployeeFirstName",
+    LastName AS "EmployeeLastName",
+    EmploymentType,
+    YearsOfExperience
+FROM
+    Employee
+WHERE
+    EmploymentType = 'Full-time'
+ORDER BY
+    YearsOfExperience DESC;
+```
 <p align="center">Query Output</p>
 <p align="center"> 
 <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/3ebefa5682eec2616741832a9560be6085931690/Assets/query_5_output.png" width="80%"/>
