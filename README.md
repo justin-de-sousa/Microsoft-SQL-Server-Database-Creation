@@ -40,7 +40,7 @@ The database is split into 8 tables which are mostly self explanatory when looki
 
 [Link to Table Creation Code](https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/78855b7f0953bdbee4dc3fc51c5eaf07e7481553/Assets/Code/SQL_Table_Creation_Code.txt)
 
-Now that the database structure has been established the next step is coding it into Microsoft SQL Server. Running code in Microsoft SQL Server is done through queries on the SQL Server program. To make it as easy as possible to replicate the SQL code has been broken up and uploaded as txt files with the code associated with the relevant step. The code just needs to be copied and pasted into the SQL query window and then executed. 
+Now that the database structure has been established the next step is coding it into Microsoft SQL Server. Running code in Microsoft SQL Server is done through queries on the SQL Server program. To make it as easy as possible to replicate the SQL code has been broken up into different queries and uploaded as txt files. The code just needs to be copied and pasted into the SQL query window and then executed. 
 
 <p align="center"><strong>Example of Query Window with Code Ready to be Executed</strong></p>
 
@@ -48,6 +48,131 @@ Now that the database structure has been established the next step is coding it 
 
 
 The main consideration when taking the ERD database design and creating those tables in SQL is the order the tables should be created. In SQL, a table which has a foreign key reference to another table cannot be initialized until the table it references has already been created. For example, the “Customer” table has to be created before the “Pet” table because the “Pet” table references “Customer.” This will also be important when inputting test entries later because a pet cannot have an entry inserted unless the customer associated with the pet has already had their information inserted into the “Customer” table. This restriction on the order data must be inserted is due to constraints placed on foreign and primary keys. Constraints are very useful for maintaining data quality and integrity because it can help mitigate missing or improper data being inserted. If there is certain information that absolutely needs to be included when generating an entry a NOT NULL constraint can be added after the value type of the column value is established. 
+
+<p align="center"><strong>Table Creation Code</strong></p>
+
+```sql
+CREATE TABLE [ServicePricing] (
+  [ServiceCodeID] INT PRIMARY KEY,
+  [ServiceName] VARCHAR(255),
+  [Price] DECIMAL
+);
+CREATE TABLE [Employee] (
+  [EmployeeID] INT IDENTITY(1,1) PRIMARY KEY,
+  [FirstName] VARCHAR(20),
+  [LastName] VARCHAR(20),
+  [EmployeeRole] VARCHAR(20),
+  [SickDays] INT,
+  [EmploymentType] VARCHAR(50),
+  [Degree] VARCHAR(20),
+  [GraduationDate] DATE,
+  [YearsOfExperience] INT,
+  [PhoneNumber] VARCHAR(10),
+  [Email] VARCHAR(50),
+  [Salary] DECIMAL,
+  [PersonalRef] VARCHAR(20),
+  [EmergencyContactPerson] VARCHAR(50),
+  [EmergencyContactNumber] VARCHAR(10),
+  CONSTRAINT CHK_EmployeeRole CHECK (
+        (EmployeeRole IN ('Office', 'Groomer') AND Degree IS NOT NULL AND GraduationDate IS NOT NULL AND YearsOfExperience IS NOT NULL)
+        OR EmployeeRole NOT IN ('Office', 'Groomer')
+  )
+);
+
+
+CREATE TABLE [Customer] (
+  [CustomerID] INT IDENTITY(1,1) PRIMARY KEY,
+  [FirstName ] VARCHAR(20) NOT NULL,
+  [LastName ] VARCHAR(20) NOT NULL ,
+  [PhoneNumber ] CHAR(10) NOT NULL,
+  [Email] VARCHAR(50),
+  [Age] INT,
+  [Gender] CHAR(1),
+  [StreetAddress] VARCHAR(100),
+  [City] VARCHAR(50),
+  [State] CHAR(2),
+  [ZipCode] VARCHAR(10)
+);
+
+CREATE TABLE [Pet] (
+  [PetID] INT IDENTITY(1,1) PRIMARY KEY,
+  [CustomerID] INT NOT NULL,
+  [PetName] VARCHAR(20),
+  [Species] VARCHAR(50) NOT NULL,
+  [Breed] VARCHAR(50),
+  [Weight] DECIMAL NOT NULL,
+  [HairType] CHAR(1) NOT NULL,
+  [Gender] CHAR(1),
+  [Vaxed] BIT NOT NULL CONSTRAINT [CHK_Vaxed] CHECK ([Vaxed] = 1), -- Add CHECK constraint
+  CONSTRAINT [FK_Pet.CustomerID]
+    FOREIGN KEY ([CustomerID])
+      REFERENCES [Customer]([CustomerID])
+);
+
+CREATE TABLE [Appointment] (
+  [AppointmentID] INT IDENTITY(1,1) PRIMARY KEY,
+  [EmployeeID] INT NOT NULL,
+  [CustomerID] INT NOT NULL,
+  [PetID] INT NOT NULL,
+  [DateTime] DATETIME NOT NULL,
+  [WalkIn] BIT NOT NULL,
+  [BasePrice] DECIMAL NOT NULL,
+  [AdditionalServicePrice] DECIMAL,
+  [TotalPrice] AS (ISNULL([BasePrice],0) + ISNULL([AdditionalServicePrice],0)) PERSISTED,
+  CONSTRAINT [FK_Appointment.PetID]
+    FOREIGN KEY ([PetID])
+      REFERENCES [Pet]([PetID]),
+  CONSTRAINT [FK_Appointment.CustomerID]
+    FOREIGN KEY ([CustomerID])
+      REFERENCES [Customer]([CustomerID]),
+  CONSTRAINT [FK_Appointment.EmployeeID]
+    FOREIGN KEY ([EmployeeID])
+      REFERENCES [Employee]([EmployeeID])
+);
+
+
+CREATE TABLE [AppointmentServices] (
+  [ServiceID] INT IDENTITY(1,1) PRIMARY KEY,
+  [ServiceCodeID] INT NOT NULL,
+  [AppointmentID] INT NOT NULL,
+  CONSTRAINT [FK_AppointmentServices.ServiceCodeID]
+    FOREIGN KEY ([ServiceCodeID])
+      REFERENCES [ServicePricing]([ServiceCodeID]),
+  CONSTRAINT [FK_AppointmentServices.AppointmentID]
+    FOREIGN KEY ([AppointmentID])
+      REFERENCES [Appointment]([AppointmentID])
+);
+
+
+CREATE TABLE [Paycheck] (
+  [PaycheckID] INT IDENTITY(1,1) PRIMARY KEY,
+  [EmployeeID] INT,
+  [IssueDate] DATE,
+  [PayPeriod Start] DATE,
+  [PayPeriod End] DATE,
+  CONSTRAINT [FK_Paycheck.EmployeeID]
+    FOREIGN KEY ([EmployeeID])
+      REFERENCES [Employee]([EmployeeID])
+);
+
+CREATE TABLE [PayStatement] (
+  [StatementID] INT IDENTITY(1,1) PRIMARY KEY,
+  [PaycheckID] INT,
+  [SSN] CHAR(11),
+  [Bank] VARCHAR(50),
+  [AccountNumber] VARCHAR(20),
+  [GrossPay] DECIMAL,
+  [FederalTax] DECIMAL,
+  [StateTax] DECIMAL,
+  [Medical] DECIMAL,
+  [Dental] DECIMAL,
+  [Disability] DECIMAL,
+  [LifeInsurance] DECIMAL,
+  CONSTRAINT [FK_PayStatement.PaycheckID]
+    FOREIGN KEY ([PaycheckID])
+      REFERENCES [Paycheck]([PaycheckID])
+);
+```
  ________________________________________
 
 **Functions and Triggers**
@@ -64,15 +189,67 @@ One of the goals of the database was to automate the base price calculation for 
 The function to calculate the base price is a fairly simple if statement designed to take a weight and hair type value as a parameter and return the price but in order to make it an automated process within the database the use of triggers will be necessary. A trigger is a type of  stored procedure in SQL which will execute a given event, in this case a function, when a specific event occurs. In this case, the trigger to calculate the base price of an appointment should occur when an entry is inserted into the “Appointment” table. The trigger will use the PetID of an Appointment entry to then pull the pet’s weight and hair type from the PetTable. IT will then use these two pieces of information to call the base price function to automatically fill the base price value of the appointment. 
 
 <p align="center"><strong>Function to Calculate the Base Price</strong></p>
-<p align="center">
-  <img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/6d7da71c31e93593bca47a9eed4f7a145718b420/Assets/get_base_price_function.png" alt="Get Base Price Function" width="60%"/>
-</p>
 
+```sql
+-- Scalar-valued function to calculate price
+CREATE FUNCTION GetBasePrice (@HairType CHAR(1), @Weight DECIMAL)
+RETURNS DECIMAL
+AS
+BEGIN
+    DECLARE @Price DECIMAL
+
+    IF @HairType = 'S'
+        SELECT @Price = CASE
+            WHEN @Weight BETWEEN 5 AND 20 THEN 20
+            WHEN @Weight BETWEEN 21 AND 40 THEN 30
+            WHEN @Weight BETWEEN 41 AND 60 THEN 40
+            WHEN @Weight BETWEEN 61 AND 80 THEN 50
+            ELSE 60
+        END
+    ELSE
+        SELECT @Price = CASE
+            WHEN @Weight BETWEEN 5 AND 20 THEN 25
+            WHEN @Weight BETWEEN 21 AND 40 THEN 45
+            WHEN @Weight BETWEEN 41 AND 60 THEN 55
+            WHEN @Weight BETWEEN 61 AND 80 THEN 65
+            ELSE 70
+        END
+
+    RETURN @Price
+END;
+```
 
 <p align="center"><strong>Trigger which calls "GetBasePrice" Function when an Appointment Insert Occurs</strong></p>
-<p align="center">
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/6d7da71c31e93593bca47a9eed4f7a145718b420/Assets/set_base_price_trigger.png" alt="Set Base Price Trigger" width="80%"/>
-</p>
+
+```sql
+-- Create a trigger to set the BasePrice of an appointment
+CREATE TRIGGER SetBasePrice
+ON Appointment
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @AppointmentID INT, @PetID INT, @HairType CHAR(1), @Weight DECIMAL, @BasePrice DECIMAL;
+
+    -- Get the AppointmentID and PetID from the inserted row
+    SELECT @AppointmentID = i.AppointmentID, @PetID = i.PetID
+    FROM inserted i;
+
+    -- Retrieve HairType and Weight from the Pet table using PetID
+    SELECT @HairType = p.HairType, @Weight = p.Weight
+    FROM Pet p
+    WHERE p.PetID = @PetID;
+
+    -- Calculate the BasePrice using the GetBasePrice function
+    SET @BasePrice = dbo.GetBasePrice(@HairType, @Weight);
+
+    -- Update the BasePrice in the Appointment table
+    UPDATE Appointment
+    SET BasePrice = @BasePrice
+    WHERE AppointmentID = @AppointmentID;
+END;
+```
 
 The other part of the pricing process which needs to be automated is additional service pricing being added to the appointments total price. The additional services Mr. Bo Jangles offers can be found in the table below and is stored in the database under the “ServicePricing” table. To make the database as streamlined for an employee as possible the additional services should be automatically summed up and added to the total price of an appointment. To solve this issue without causing redundancy issues, the “AppointmentServices” table was created. This table will only record the service code (ServiceCodeID) of one additional service and the AppointmentID of the appointment it was utilized on (as well as a primary key to identify it of course). 
 
@@ -84,17 +261,51 @@ The other part of the pricing process which needs to be automated is additional 
 This time the function to calculate the additional service price will take an appointment ID as an input and return the cumulative cost of all the additional services booked for that particular appointment. Essentially the function finds all the entries in the “AppointmentServices” table for an appointment using the AppointmentID, finds what the price for each of these appointment service entries should be using an inner join on the ServiceCodeID, and sums them up.
 
 <p align="center"><strong>Function Calculating an Appointment Additonal Service Price</strong></p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/bc46f17f585aa76bde6fadaca13b31f6d0c9195f/Assets/additional_service_price_function.png" alt="Set Base Price Trigger" width="80%"/>
-</p>
 
+```sql
+ -- Create a function to calculate the total additional service price for an appointment
+CREATE FUNCTION CalculateAdditionalServicePrice (@AppointmentID INT)
+RETURNS DECIMAL
+AS
+BEGIN
+    DECLARE @TotalPrice DECIMAL;
+
+    SELECT @TotalPrice = SUM(sp.Price)
+    FROM AppointmentServices AS asvc
+    INNER JOIN ServicePricing AS sp ON asvc.ServiceCodeID = sp.ServiceCodeID
+    WHERE asvc.AppointmentID = @AppointmentID;
+
+    RETURN @TotalPrice;
+END;
+```
 The trigger which will call on this function will activate whenever an entry is inserted into the “AppointmentServices” table. This will ensure that as each additional service for an appointment is inserted into the database the AdditionalServicePrice value in the “Appointment” table will be updated and accurate.
 
 <p align="center"><strong>Trigger which calls "SetAdditionalServicePrice" when an Additional Service is Instered</strong></p>
-<p align="center"> 
-<img src="https://github.com/justin-de-sousa/Microsoft-SQL-Server-Database-Creation/blob/c8fb5b9f7c703f4916d9712da09e98f8bc5a6f58/Assets/additional_service_trigger.png" alt="Set Base Price Trigger" width="80%"/>
-</p>
 
+```sql
+-- Create a trigger to set the AdditionalServicePrice for an appointment
+CREATE TRIGGER SetAdditionalServicePrice
+ON AppointmentServices
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @AppointmentID INT, @AdditionalServicePrice DECIMAL;
+
+    -- Get the AppointmentID from the inserted row in AppointmentServices
+    SELECT @AppointmentID = i.AppointmentID
+    FROM inserted i;
+
+    -- Calculate the AdditionalServicePrice using the CalculateAdditionalServicePrice function
+    SELECT @AdditionalServicePrice = dbo.CalculateAdditionalServicePrice(@AppointmentID);
+
+    -- Update the AdditionalServicePrice in the corresponding Appointment row
+    UPDATE Appointment
+    SET AdditionalServicePrice = @AdditionalServicePrice
+    WHERE AppointmentID = @AppointmentID;
+END;
+```
 ________________________________________
 
 **Data Insertion**
